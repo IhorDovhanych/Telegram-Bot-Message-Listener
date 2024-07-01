@@ -1,11 +1,13 @@
 from telethon import TelegramClient, events
 import asyncio
 import winsound
-from core.config import dict
+import webbrowser
+from core.config import config
+import subprocess
 
-api_id = dict["api_id"]
-api_hash = dict["api_hash"]
-phone = dict["phone"]
+api_id = config["api_id"]
+api_hash = config["api_hash"]
+phone = config["phone"]
 """
 To get api_id and api_hash you need to
 create telegram application on my.telegram.org
@@ -22,14 +24,15 @@ EXPECTED_MESSAGE_PIECE=expected_message_piece
 MESSAGE_TO_SEND=message_to_send_to_bot
 """
 
-bot_username = dict["bot_username"]  # use telegram tags: @example_username
+bot_username = config["bot_username"]  # use telegram tags: @example_username
 
-expected_message_piece = dict["expected_message_piece"]  # a piece of text you expect in response
+expected_message_piece = config["expected_message_piece"]  # a piece of text you expect in response
+
 previous_message = (
     ""  # a variable which need to avoid loop if you getting same response after message
 )
 
-message_to_send = dict["message_to_send"]  # a message which you send to the chat
+message_to_send = config["message_to_send"]  # a message which you send to the chat
 
 client = TelegramClient("session_name", api_id, api_hash)
 
@@ -46,18 +49,14 @@ async def handler(event):
         if expected_message_piece in event.message.message:  # found message condition
             print("✅-----------------FOUND-----------------✅")
             default_print(message_to_send, event.message.message)
-            print("---------------------END--------------------")
-            winsound.MessageBeep()
-            await client.disconnect()
+            await default_script_end()
 
         elif (
             event.message.message == previous_message
         ):  # stuck with similar messages condition
             print("❌-----------------STUCK------------------❌")
             default_print(message_to_send, event.message.message)
-            print("💥-------------------END------------------💥")
-            winsound.MessageBeep()
-            await client.disconnect()
+            await default_script_end()
 
         previous_message = event.message.message
 
@@ -72,6 +71,26 @@ def default_print(message, response):
     print(f'"{message}"\n')
     print("Bot response:")
     print(response)
+
+async def default_script_end():
+    print("💥-------------------END------------------💥")
+    winsound.MessageBeep()
+    #open_telegram_web(bot_username)
+    open_telegram_desktop()
+    await client.disconnect()
+
+def open_telegram_desktop():
+    try:
+        # Replace with your actual path to Telegram Desktop executable
+        telegram_path = config["telegram_path"]
+        
+        subprocess.Popen([telegram_path])
+        print("Telegram Desktop is opening...")
+    except Exception as e:
+        print(f"Error opening Telegram Desktop: {e}")
+
+def open_telegram_web(username):
+    webbrowser.open(f"https://web.telegram.org/k/#{username}")
 
 
 async def main():
