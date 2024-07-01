@@ -83,7 +83,7 @@ def open_telegram_desktop():
     try:
         # Replace with your actual path to Telegram Desktop executable
         telegram_path = config["telegram_path"]
-        
+
         subprocess.Popen([telegram_path])
         print("Telegram Desktop is opening...")
     except Exception as e:
