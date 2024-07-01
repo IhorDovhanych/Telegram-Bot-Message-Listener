@@ -17,11 +17,24 @@ MESSAGE_TO_FIND=expected_response_text
 MESSAGE_TO_SEND=message_to_send_to_bot
 ```
 
-3. **Dependencies**: Install necessary dependencies using `pip`:
-
-```
-pip install telethon
-```
+3. **Dependencies**: 
+    3.1 First create venv:
+    ```
+    python -m venv venv
+    ```
+    Than activate it
+    ```
+    .\venv\Scripts\activate
+    ```
+    3.2 Install necessary dependencies using `pip`:
+    ```
+    pip install telethon
+    pip install python-dotenv
+    ```
+    or
+    ```
+    pip install -r requirements.txt
+    ```
 
 ## Usage
 
