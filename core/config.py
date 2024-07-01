@@ -11,6 +11,6 @@ dict = {
     "api_hash": os.environ.get("API_HASH"),
     "phone": os.environ.get("PHONE"),
     "bot_username": os.environ.get("BOT_USERNAME"),
-    "message_to_find": os.environ.get("MESSAGE_TO_FIND"),
+    "expected_message_piece": os.environ.get("EXPECTED_MESSAGE_PIECE "),
     "message_to_send": os.environ.get("MESSAGE_TO_SEND")
 }

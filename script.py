@@ -18,11 +18,13 @@ API_ID=01234567
 API_HASH=859325ga4ca28345u123d906f4358
 PHONE=+1401234567
 BOT_USERNAME=@example_username
+EXPECTED_MESSAGE_PIECE=Вчусь на графічного дизайнера
+MESSAGE_TO_SEND=👎
 """
 
 bot_username = dict["bot_username"]  # use telegram tags: @example_username
 
-message_to_find = dict["message_to_find"]  # a message you expect in response
+expected_message_piece = dict["expected_message_piece"]  # a piece of text you expect in response
 previous_message = (
     ""  # a variable which need to avoid loop if you getting same response after message
 )
@@ -34,14 +36,14 @@ client = TelegramClient("session_name", api_id, api_hash)
 
 @client.on(events.NewMessage(from_users=[bot_username]))
 async def handler(event):
-    global previous_message, message_to_find, message_to_send
+    global previous_message, expected_message_piece, message_to_send
     if (
         event.message.message
     ):  # this variable could return null sometimes and it's make bot working incorrect, so we check is it exists
         print("🤖----------------Response----------------🤖")
         default_print(message_to_send, event.message.message)
 
-        if message_to_find in event.message.message:  # found message condition
+        if expected_message_piece in event.message.message:  # found message condition
             print("✅-----------------FOUND-----------------✅")
             default_print(message_to_send, event.message.message)
             print("---------------------END--------------------")
