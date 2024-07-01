@@ -5,7 +5,7 @@ This script interacts with a Telegram bot, sending a specified message and monit
 ## Setup
 
 1. **Telegram API Credentials**: Obtain `api_id`, `api_hash`, and `phone` from [my.telegram.org](https://my.telegram.org/auth).
-   
+
 2. **Environment Variables**: Create a `.env` file with the following variables:
 
 ```
@@ -19,12 +19,16 @@ MESSAGE_TO_SEND=message_to_send_to_bot
 
 3. **Dependencies**: Install necessary dependencies using `pip`:
 
-`pip install telethon`
+```
+pip install telethon
+```
+
 ## Usage
 
 1. **Run the Script**: Execute the script to start interacting with the Telegram bot.
 
 2. **Expected Behavior**:
+
 - The script sends `MESSAGE_TO_SEND` to `BOT_USERNAME`.
 - It listens for responses from the bot.
 - If `MESSAGE_TO_FIND` is found in a response, the script stops and notifies with a sound.
