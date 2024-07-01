@@ -17,7 +17,8 @@ MESSAGE_TO_FIND=expected_response_text
 MESSAGE_TO_SEND=message_to_send_to_bot
 ```
 
-3. **Dependencies**: 
+3. **Dependencies**:
+
     3.1 First create venv:
     ```
     python -m venv venv
