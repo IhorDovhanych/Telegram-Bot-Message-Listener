@@ -13,7 +13,7 @@ API_ID=01234567
 API_HASH=859325ga4ca28345u123d906f4358
 PHONE=+1401234567
 BOT_USERNAME=@example_username
-MESSAGE_TO_FIND=expected_response_text
+EXPECTED_MESSAGE_PIECE=expected_message_piece
 MESSAGE_TO_SEND=message_to_send_to_bot
 ```
 
@@ -45,7 +45,7 @@ MESSAGE_TO_SEND=message_to_send_to_bot
 
 - The script sends `MESSAGE_TO_SEND` to `BOT_USERNAME`.
 - It listens for responses from the bot.
-- If `MESSAGE_TO_FIND` is found in a response, the script stops and notifies with a sound.
+- If `EXPECTED_MESSAGE_PIECE` is found in a response, the script stops and notifies with a sound.
 - If the bot sends the same message consecutively, the script terminates to prevent looping.
 
 ## Example

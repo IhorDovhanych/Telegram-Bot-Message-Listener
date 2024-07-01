@@ -18,8 +18,8 @@ API_ID=01234567
 API_HASH=859325ga4ca28345u123d906f4358
 PHONE=+1401234567
 BOT_USERNAME=@example_username
-EXPECTED_MESSAGE_PIECE=Вчусь на графічного дизайнера
-MESSAGE_TO_SEND=👎
+EXPECTED_MESSAGE_PIECE=expected_message_piece
+MESSAGE_TO_SEND=message_to_send_to_bot
 """
 
 bot_username = dict["bot_username"]  # use telegram tags: @example_username
